@@ -1,0 +1,5 @@
+name: BIT
+main: Taki21\BlockInteractTracker\Main
+version: 0.0.1
+api: [1.12.0, 1.13.0]
+author: Taki21
