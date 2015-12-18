@@ -5,4 +5,5 @@ Block Interaction Tracker
 
 ### Downloads:
 
-Build #1: <a href = "https://github.com/SWNetworkDevelopers/BIT/edit/master/README.md">![Download](http://thepowergameapp.com/wp-content/uploads/2015/09/25743587688387092089.png)</a>
+Build #1:
+<a href = "https://github.com/SWNetworkDevelopers/BIT/releases/download/Latest/BIT_v0.0.1.phar">![Download](http://thepowergameapp.com/wp-content/uploads/2015/09/25743587688387092089.png)</a>
