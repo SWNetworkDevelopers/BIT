@@ -12,11 +12,30 @@ use pocketmine\level\Level;
 use pocketmine\level\Position;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
+use pocketmine\command\Command;
+use pocketmine\command\CommandSender;
 
 class Main extends PluginBase implements Listener{
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->getLogger()->info(C::AQUA."BlockInteractTracker".C::GOLD." Enabled!");
+	}
+	public function onCommand(CommandSender $s, Command $cmd, $label, array $args){
+		if(strtolower($cmd->getName() == "bit-off")){
+			if($s instanceof Player){
+				$s->sendMessage("Null");
+			}else{
+				return $this->onBreak() and $this->onPlace();
+			}
+		}
+		if(strtolower($cmd->getName() == "bit-on")){
+			if($s instanceof Player){
+				$s->sendMessage("Null");
+			}else{
+				$this->getLogger()->notice("".$this->onPlace()."");
+				$this->getLogger()->warning("".$this->onBreak."");
+			}
+		}
 	}
 	public function onPlace(BlockPlaceEvent $bpe){
 		$pl = $bpe->getPlayer();
@@ -38,7 +57,7 @@ class Main extends PluginBase implements Listener{
 		$x = $pl->getX();
 		$y = $pl->getY();
 		$z = $pl->getZ();
-		$this->getLogger()->info(C::YELLOW."$name".C::DARK_AQUA." Destroyed/tried to Destroy (a)".C::YELLOW." $blname".C::DARK_AQUA." in World:".C::YELLOW." $lvl".C::DARK_AQUA." at Position:".C::YELLOW." $x, $y, $z");
+		$this->getLogger()->info(C::YELLOW."$name".C::DARK_AQUA." Destroyed/tried to Destroy (a)".C::YELLOW." $blname".C::DARK_AQUA." in World:".C::YELLOW." $lvl".C::DARK_AQUA." at Position:".C::YELLOW." $x, $y, $z");		return;
 	}
 	public function onDisable(){
 		$this->getLogger()->info(C::DARK_RED."X ----BlockInteractTracker Disabled! Is the Server Off?---- X");
