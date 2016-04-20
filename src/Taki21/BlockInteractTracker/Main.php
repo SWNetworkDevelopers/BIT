@@ -12,31 +12,13 @@ use pocketmine\level\Level;
 use pocketmine\level\Position;
 use pocketmine\event\Listener;
 use pocketmine\plugin\PluginBase;
-use pocketmine\command\Command;
-use pocketmine\command\CommandSender;
 
 class Main extends PluginBase implements Listener{
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->getLogger()->info(C::AQUA."BlockInteractTracker".C::GOLD." Enabled!");
 	}
-	public function onCommand(CommandSender $s, Command $cmd, $label, array $args){
-		if(strtolower($cmd->getName() == "bit-off")){
-			if($s instanceof Player){
-				$s->sendMessage("Null");
-			}else{
-				return $this->onBreak() and $this->onPlace();
-			}
-		}
-		if(strtolower($cmd->getName() == "bit-on")){
-			if($s instanceof Player){
-				$s->sendMessage("Null");
-			}else{
-				$this->getLogger()->notice("".$this->onPlace()."");
-				$this->getLogger()->warning("".$this->onBreak."");
-			}
-		}
-	}
+
 	public function onPlace(BlockPlaceEvent $bpe){
 		$pl = $bpe->getPlayer();
 		$name = $pl->getName();
